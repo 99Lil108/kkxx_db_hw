@@ -1,0 +1,39 @@
+<script setup>
+import { useStore } from "vuex";
+import { defineProps, reactive } from "vue";
+const props = defineProps({
+    items: {},
+  }),
+  { state } = useStore(),
+  data = reactive({
+    select_id: -1,
+  });
+const selectId = (idx) => {};
+</script>
+<template>
+  <div class="nav">
+    <div
+      class="function"
+      v-for="(item, idx) in items"
+      :key="idx"
+      :class="{ activeSty: state.funcIdx == idx }"
+      @click="selectId(idx)"
+    >
+      <div>{{ item.name }}</div>
+    </div>
+  </div>
+</template>
+<style scoped lang="less">
+.nav {
+  width: 10%;
+  height: 100%;
+  background-color: #efefef;
+  color: #8b8b8b;
+  overflow-y: auto;
+}
+.nav::-webkit-scrollbar {
+  display: none;
+}
+.activeSty {
+}
+</style>
